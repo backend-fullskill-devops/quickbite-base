@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: restaurant-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:quickbite_restaurant_db}
+    username: ${DB_USERNAME:quickbite_restaurant}
+    password: ${DB_PASSWORD:quickbite_restaurant}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+
+server:
+  port: ${SERVER_PORT:8082}

@@ -1,0 +1,46 @@
+services:
+  quickbite-user:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - quickbite-net
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${USER_DB_NAME}
+      - DB_USERNAME=${USER_DB_USERNAME}
+      - DB_PASSWORD=${USER_DB_PASSWORD}
+      - SERVER_PORT=${USER_SERVER_PORT}
+      # quickbite-restaurant:
+      #   build:
+      #     context: ./restaurant-service
+      #     dockerfile: Dockerfile
+      #   ports:
+      #     - "8082:8082"
+      #   networks:
+      #     - quickbite-net
+
+      # quickbite-order:
+      #   build:
+      #     context: ./order-service
+      #     dockerfile: Dockerfile
+      #   ports:
+      #     - "8083:8083"
+      #   networks:
+      #     - quickbite-net
+
+      # quickbite-notification:
+      #   build:
+      #     context: ./notification-service
+      #     dockerfile: Dockerfile
+      #   ports:
+      #     - "8084:8084"
+      #   networks:
+      #     - quickbite-net
+
+networks:
+  quickbite-net:
+    external: true

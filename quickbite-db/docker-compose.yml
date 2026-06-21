@@ -1,0 +1,25 @@
+services:
+  quickbite-db:
+    image: postgres:15-alpine
+    container_name: quickbite-db
+    ports:
+      - "8079:5432"
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql # Mount script khởi tạo tự động
+    networks:
+      - quickbite-net
+    # restart: always
+
+volumes:
+  db-data:
+
+networks:
+  quickbite-net:
+    name: quickbite-net # Đặt tên cố định cho mạng ảo chung
+    driver: bridge
