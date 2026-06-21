@@ -38,7 +38,7 @@ public class RefreshTokenService {
             throw new RuntimeException("Invalid refresh token. Please login again.");
         }
 
-        User user = userRepository.findById(refresh.getUser().getId())
+        userRepository.findById(refresh.getUser().getId())
                 .orElseThrow(() -> new RuntimeException("Invalid refresh token. Please login again."));
 
         return JwtResponse.builder()
