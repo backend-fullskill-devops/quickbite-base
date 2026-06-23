@@ -30,38 +30,37 @@ services:
       - DB_USERNAME=${RESTAURANT_DB_USERNAME}
       - DB_PASSWORD=${RESTAURANT_DB_PASSWORD}
       - SERVER_PORT=${RESTAURANT_SERVER_PORT}
+  # quickbite-order:
+  #   build:
+  #     context: ./order-service
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
+  #   networks:
+  #     - quickbite-net
+  #   environment:
+  #     - DB_HOST=${DB_HOST}
+  #     - DB_PORT=${DB_PORT}
+  #     - DB_NAME=${ORDER_DB_NAME}
+  #     - DB_USERNAME=${ORDER_DB_USERNAME}
+  #     - DB_PASSWORD=${ORDER_DB_PASSWORD}
+  #     - SERVER_PORT=${ORDER_SERVER_PORT}
 
-  quickbite-order:
-    build:
-      context: ./order-service
-      dockerfile: Dockerfile
-    ports:
-      - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
-    networks:
-      - quickbite-net
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${ORDER_DB_NAME}
-      - DB_USERNAME=${ORDER_DB_USERNAME}
-      - DB_PASSWORD=${ORDER_DB_PASSWORD}
-      - SERVER_PORT=${ORDER_SERVER_PORT}
-
-  quickbite-notification:
-    build:
-      context: ./notification-service
-      dockerfile: Dockerfile
-    ports:
-      - "${NOTIFICATION_SERVER_PORT}:${NOTIFICATION_SERVER_PORT}"
-    networks:
-      - quickbite-net
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_NAME=${NOTIFICATION_DB_NAME}
-      - DB_USERNAME=${NOTIFICATION_DB_USERNAME}
-      - DB_PASSWORD=${NOTIFICATION_DB_PASSWORD}
-      - SERVER_PORT=${NOTIFICATION_SERVER_PORT}
+  # quickbite-notification:
+  #   build:
+  #     context: ./notification-service
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "${NOTIFICATION_SERVER_PORT}:${NOTIFICATION_SERVER_PORT}"
+  #   networks:
+  #     - quickbite-net
+  #   environment:
+  #     - DB_HOST=${DB_HOST}
+  #     - DB_PORT=${DB_PORT}
+  #     - DB_NAME=${NOTIFICATION_DB_NAME}
+  #     - DB_USERNAME=${NOTIFICATION_DB_USERNAME}
+  #     - DB_PASSWORD=${NOTIFICATION_DB_PASSWORD}
+  #     - SERVER_PORT=${NOTIFICATION_SERVER_PORT}
 
 networks:
   quickbite-net:

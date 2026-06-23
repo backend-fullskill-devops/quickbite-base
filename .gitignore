@@ -4,3 +4,7 @@ out
 build
 .vscode
 .gradle
+notification-service
+order-service
+restaurant-service
+user-service
