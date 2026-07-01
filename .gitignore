@@ -8,3 +8,4 @@ notification-service
 order-service
 restaurant-service
 user-service
+api-gateway

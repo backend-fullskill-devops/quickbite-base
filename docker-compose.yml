@@ -1,4 +1,19 @@
 services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "${API_GATEWAY_SERVER_PORT}:${API_GATEWAY_SERVER_PORT}"
+    networks:
+      - quickbite-net
+    environment:
+      - USER_SERVICE_URI=${USER_SERVICE_URI}
+      - RESTAURANT_SERVICE_URI=${RESTAURANT_SERVICE_URI}
+      - ORDER_SERVICE_URI=${ORDER_SERVICE_URI}
+      - NOTIFICATION_SERVICE_URI=${NOTIFICATION_SERVICE_URI}
+      - SERVER_PORT=${API_GATEWAY_SERVER_PORT}
+
   quickbite-user:
     build:
       context: ./user-service
@@ -45,6 +60,9 @@ services:
   #     - DB_USERNAME=${ORDER_DB_USERNAME}
   #     - DB_PASSWORD=${ORDER_DB_PASSWORD}
   #     - SERVER_PORT=${ORDER_SERVER_PORT}
+  #     - FEIGN_CLIENT_CONFIG_USER_SERVICE_URL=http://quickbite-user:8081
+  #     - FEIGN_CLIENT_CONFIG_RESTAURANT_SERVICE_URL=http://quickbite-restaurant:8082
+  #     - FEIGN_CLIENT_CONFIG_NOTIFICATION_SERVICE_URL=http://quickbite-notification:8084
 
   # quickbite-notification:
   #   build:
