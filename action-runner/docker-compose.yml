@@ -7,8 +7,8 @@ services:
       ORG_RUNNER: "true"
       ORG_NAME: "backend-fullskill-devops"
       RUNNER_NAME: "quickbite-selfhosted-runner-01"
-      RUNNER_TOKEN: "BDX2IRJRYBYHN723LEJAVQLKISK3U"
-      RUNNER_LABELS: "quickbite,backend,ubuntu"
+      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      RUNNER_LABELS: "self-hosted,quickbite,backend,ubuntu"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - action-runner-work:/data/_work
