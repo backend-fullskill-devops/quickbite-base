@@ -4,7 +4,7 @@ services:
     container_name: action-runner
     restart: always
     environment:
-      ORG_RUNNER: "true"
+      RUNNER_SCOPE: "org"
       ORG_NAME: "backend-fullskill-devops"
       RUNNER_NAME: "quickbite-selfhosted-runner-01"
       RUNNER_TOKEN: ${RUNNER_TOKEN}
