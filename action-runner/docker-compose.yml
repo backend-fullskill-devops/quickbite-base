@@ -1,0 +1,17 @@
+services:
+  action-runner:
+    image: myoung34/github-runner:latest
+    container_name: action-runner
+    restart: always
+    environment:
+      ORG_RUNNER: "true"
+      ORG_NAME: "backend-fullskill-devops"
+      RUNNER_NAME: "quickbite-selfhosted-runner-01"
+      RUNNER_TOKEN: "BDX2IRJRYBYHN723LEJAVQLKISK3U"
+      RUNNER_LABELS: "quickbite,backend,ubuntu"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - action-runner-work:/data/_work
+
+volumes:
+  action-runner-work:
