@@ -7,7 +7,7 @@ services:
       RUNNER_SCOPE: "org"
       ORG_NAME: "backend-fullskill-devops"
       RUNNER_NAME: "quickbite-selfhosted-runner-01"
-      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      ACCESS_TOKEN: ${PERSONAL_ACCESS_TOKEN_FOR_RUNNER}
       RUNNER_LABELS: "self-hosted,quickbite,backend,ubuntu"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
