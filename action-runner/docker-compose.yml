@@ -1,8 +1,9 @@
 services:
   action-runner:
     image: myoung34/github-runner:latest
-    container_name: action-runner
-    restart: always
+    deploy:
+      mode: replicated
+      replicas: 3
     environment:
       RUNNER_SCOPE: "org"
       ORG_NAME: "backend-fullskill-devops"
@@ -11,3 +12,4 @@ services:
       RUNNER_LABELS: "self-hosted,quickbite,backend,ubuntu"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
