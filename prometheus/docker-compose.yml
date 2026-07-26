@@ -1,0 +1,23 @@
+services:
+
+  prometheus:
+    image: prom/prometheus:v3.13.1
+    container_name: quickbite-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      # Mount file cấu hình vừa tạo ở Bước 1 vào container
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - quickbite-net
+
+volumes:
+  prometheus-data:
+
+networks:
+  quickbite-net:
+    external: true

@@ -45,24 +45,24 @@ services:
       - DB_USERNAME=${RESTAURANT_DB_USERNAME}
       - DB_PASSWORD=${RESTAURANT_DB_PASSWORD}
       - SERVER_PORT=${RESTAURANT_SERVER_PORT}
-  # quickbite-order:
-  #   build:
-  #     context: ./order-service
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
-  #   networks:
-  #     - quickbite-net
-  #   environment:
-  #     - DB_HOST=${DB_HOST}
-  #     - DB_PORT=${DB_PORT}
-  #     - DB_NAME=${ORDER_DB_NAME}
-  #     - DB_USERNAME=${ORDER_DB_USERNAME}
-  #     - DB_PASSWORD=${ORDER_DB_PASSWORD}
-  #     - SERVER_PORT=${ORDER_SERVER_PORT}
-  #     - FEIGN_CLIENT_CONFIG_USER_SERVICE_URL=http://quickbite-user:8081
-  #     - FEIGN_CLIENT_CONFIG_RESTAURANT_SERVICE_URL=http://quickbite-restaurant:8082
-  #     - FEIGN_CLIENT_CONFIG_NOTIFICATION_SERVICE_URL=http://quickbite-notification:8084
+  quickbite-order:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    ports:
+      - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
+    networks:
+      - quickbite-net
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${ORDER_DB_NAME}
+      - DB_USERNAME=${ORDER_DB_USERNAME}
+      - DB_PASSWORD=${ORDER_DB_PASSWORD}
+      - SERVER_PORT=${ORDER_SERVER_PORT}
+      - FEIGN_CLIENT_CONFIG_USER_SERVICE_URL=http://quickbite-user:8081
+      - FEIGN_CLIENT_CONFIG_RESTAURANT_SERVICE_URL=http://quickbite-restaurant:8082
+      - FEIGN_CLIENT_CONFIG_NOTIFICATION_SERVICE_URL=http://quickbite-notification:8084
 
   # quickbite-notification:
   #   build:
