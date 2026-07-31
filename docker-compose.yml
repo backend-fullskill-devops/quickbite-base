@@ -18,8 +18,8 @@ services:
     build:
       context: ./user-service
       dockerfile: Dockerfile
-    ports:
-      - "${USER_SERVER_PORT}:${USER_SERVER_PORT}"
+    # ports:
+    #   - "${USER_SERVER_PORT}:${USER_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:
@@ -34,8 +34,8 @@ services:
     build:
       context: ./restaurant-service
       dockerfile: Dockerfile
-    ports:
-      - "${RESTAURANT_SERVER_PORT}:${RESTAURANT_SERVER_PORT}"
+    # ports:
+    #   - "${RESTAURANT_SERVER_PORT}:${RESTAURANT_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:
@@ -49,8 +49,8 @@ services:
     build:
       context: ./order-service
       dockerfile: Dockerfile
-    ports:
-      - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
+    # ports:
+    #   - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:

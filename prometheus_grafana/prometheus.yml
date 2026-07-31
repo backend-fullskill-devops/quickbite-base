@@ -12,3 +12,8 @@ scrape_configs:
           - 'quickbite-restaurant:8082'
           - 'quickbite-order:8083'
           # - 'quickbite-notification:8084'
+  
+  - job_name: 'vps-hardware'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['node-exporter:9100']
