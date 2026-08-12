@@ -1,25 +1,25 @@
 services:
-  api-gateway:
-    build:
-      context: ./api-gateway
-      dockerfile: Dockerfile
-    ports:
-      - "${API_GATEWAY_SERVER_PORT}:${API_GATEWAY_SERVER_PORT}"
-    networks:
-      - quickbite-net
-    environment:
-      - USER_SERVICE_URI=${USER_SERVICE_URI}
-      - RESTAURANT_SERVICE_URI=${RESTAURANT_SERVICE_URI}
-      - ORDER_SERVICE_URI=${ORDER_SERVICE_URI}
-      - NOTIFICATION_SERVICE_URI=${NOTIFICATION_SERVICE_URI}
-      - SERVER_PORT=${API_GATEWAY_SERVER_PORT}
+  # api-gateway:
+  #   build:
+  #     context: ./api-gateway
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "${API_GATEWAY_SERVER_PORT}:${API_GATEWAY_SERVER_PORT}"
+  #   networks:
+  #     - quickbite-net
+  #   environment:
+  #     - USER_SERVICE_URI=${USER_SERVICE_URI}
+  #     - RESTAURANT_SERVICE_URI=${RESTAURANT_SERVICE_URI}
+  #     - ORDER_SERVICE_URI=${ORDER_SERVICE_URI}
+  #     - NOTIFICATION_SERVICE_URI=${NOTIFICATION_SERVICE_URI}
+  #     - SERVER_PORT=${API_GATEWAY_SERVER_PORT}
 
   quickbite-user:
     build:
       context: ./user-service
       dockerfile: Dockerfile
-    # ports:
-    #   - "${USER_SERVER_PORT}:${USER_SERVER_PORT}"
+    ports:
+      - "${USER_SERVER_PORT}:${USER_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:
@@ -34,8 +34,8 @@ services:
     build:
       context: ./restaurant-service
       dockerfile: Dockerfile
-    # ports:
-    #   - "${RESTAURANT_SERVER_PORT}:${RESTAURANT_SERVER_PORT}"
+    ports:
+      - "${RESTAURANT_SERVER_PORT}:${RESTAURANT_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:
@@ -49,8 +49,8 @@ services:
     build:
       context: ./order-service
       dockerfile: Dockerfile
-    # ports:
-    #   - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
+    ports:
+      - "${ORDER_SERVER_PORT}:${ORDER_SERVER_PORT}"
     networks:
       - quickbite-net
     environment:
@@ -64,21 +64,21 @@ services:
       - FEIGN_CLIENT_CONFIG_RESTAURANT_SERVICE_URL=http://quickbite-restaurant:8082
       - FEIGN_CLIENT_CONFIG_NOTIFICATION_SERVICE_URL=http://quickbite-notification:8084
 
-  # quickbite-notification:
-  #   build:
-  #     context: ./notification-service
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "${NOTIFICATION_SERVER_PORT}:${NOTIFICATION_SERVER_PORT}"
-  #   networks:
-  #     - quickbite-net
-  #   environment:
-  #     - DB_HOST=${DB_HOST}
-  #     - DB_PORT=${DB_PORT}
-  #     - DB_NAME=${NOTIFICATION_DB_NAME}
-  #     - DB_USERNAME=${NOTIFICATION_DB_USERNAME}
-  #     - DB_PASSWORD=${NOTIFICATION_DB_PASSWORD}
-  #     - SERVER_PORT=${NOTIFICATION_SERVER_PORT}
+  quickbite-notification:
+    build:
+      context: ./notification-service
+      dockerfile: Dockerfile
+    ports:
+      - "${NOTIFICATION_SERVER_PORT}:${NOTIFICATION_SERVER_PORT}"
+    networks:
+      - quickbite-net
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${NOTIFICATION_DB_NAME}
+      - DB_USERNAME=${NOTIFICATION_DB_USERNAME}
+      - DB_PASSWORD=${NOTIFICATION_DB_PASSWORD}
+      - SERVER_PORT=${NOTIFICATION_SERVER_PORT}
 
 networks:
   quickbite-net:
